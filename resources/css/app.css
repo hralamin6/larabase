@@ -1,0 +1,89 @@
+@import 'tailwindcss';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/robsontenorio/mary/src/View/Components/**/*.php';
+
+/** daisyUI */
+@plugin "daisyui" {
+    themes: all;
+}
+
+/* Theme toggle support */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+/* @theme {
+    --font-sans: 'Inter var';
+    
+    --animate-shimmer: shimmer 1.5s infinite;
+    @keyframes shimmer {
+      100% {
+        transform: translateX(200%);
+      }
+    }
+} */
+/**
+ * Paginator - Traditional style
+ * Because Laravel defaults does not match well the design of daisyUI.
+ */
+.mary-table-pagination span[aria-current="page"]>span {
+    @apply bg-primary text-base-100;
+}
+
+.mary-table-pagination button {
+    @apply cursor-pointer;
+}
+
+/* Global Focus & Border Blinking Fix */
+*,
+*::before,
+*::after {
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+*:focus,
+*:focus-visible,
+*:focus-within,
+*:active {
+    outline: 0 !important;
+    outline-style: none !important;
+    outline-width: 0px !important;
+    outline-color: transparent !important;
+    outline-offset: 0 !important;
+    box-shadow: none !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+    --tw-ring-offset-shadow: 0 0 #0000 !important;
+    --tw-ring-width: 0px !important;
+    --tw-ring-color: transparent !important;
+    --tw-ring-offset-width: 0px !important;
+    --tw-ring-offset-color: transparent !important;
+    --tw-ring-inset: initial !important;
+}
+
+/* Eliminate border & outline flash when losing focus / clicking outside */
+.btn,
+.card,
+.input,
+.select,
+.textarea,
+button,
+a,
+input,
+textarea,
+select,
+summary,
+label,
+[tabindex] {
+    transition-property: color, background-color, opacity, transform !important;
+}
+
+.cropper-view-box,
+.cropper-face {
+  border: 2px solid #3b82f6 !important;
+  outline: none;
+}
+
+/* [x-cloak] { display: none !important; } */
